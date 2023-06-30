@@ -19,7 +19,10 @@ async function indexNotes(req, res) {
 
 async function deleteNotes(req, res) {
     const note = await Note.findById(req.params.id)
-    res.json(note.deleteOne)
+    console.log(note, 'note from delete')
+    // res.json(note.deleteOne)
+    note.deleteOne()
+    res.sendStatus("204")
 }
 
 // async function createNote(req, res) {

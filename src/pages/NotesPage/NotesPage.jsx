@@ -6,7 +6,7 @@ import { createNote } from '../../utilities/notes-api';
 import NoteCard from '../../components/NoteCard/NoteCard'
 //import NewNoteForm from '../../components/NewNoteForm/NewNoteForm'; 
 
-export default function NotesPage({ user, note }) {
+export default function NotesPage({ user }) {
     const [notes, setNotes] = useState([]);
     const [newNote, setNewNote] = useState({ text: '' });
   
@@ -47,12 +47,14 @@ export default function NotesPage({ user, note }) {
       }
     }
 
-    const notesPageItemsJsx = notes.map((note) => (
-         <>console.log(note._id, 'noteid')
-         <NoteCard note={note} key={note._id} />
-        
-         </>
-     ))
+    let notesPageItemsJsx = null; 
+    if (notes.length > 0 ) {
+      notesPageItemsJsx = notes.map((note) => (
+        <NoteCard note={note} key={note?._id} fetchNotes={fetchNotes} />
+  
+      ))
+    }
+     
 
     return (
         <>

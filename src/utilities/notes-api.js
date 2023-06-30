@@ -13,7 +13,7 @@ export function createNote(note) {
 
 // delete a note
 export function deleteNote(noteId) {
-    return sendRequest(BASE_URL, 'DELETE', noteId)
+    return sendRequest(`${BASE_URL}/${noteId}`, 'DELETE')
 }
 
 
